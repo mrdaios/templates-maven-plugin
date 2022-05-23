@@ -6,7 +6,7 @@
     <groupId>io.github.mrdaios</groupId>
     <artifactId>templates-api</artifactId>
     <packaging>jar</packaging>
-    <version>0.0.1</version>
+    <version>0.0.2</version>
     <name>templates-api</name>
     <description>templates</description>
     <url>https://github.com/mrdaios/templates-maven-plugin</url>

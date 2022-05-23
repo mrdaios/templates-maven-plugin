@@ -6,7 +6,7 @@
     <groupId>io.github.mrdaios</groupId>
     <artifactId>templates-api-freemarker</artifactId>
     <packaging>jar</packaging>
-    <version>0.0.1</version>
+    <version>0.0.2</version>
     <name>templates-api-freemarker</name>
     <description>templates</description>
     <url>https://github.com/mrdaios/templates-maven-plugin</url>
@@ -57,7 +57,7 @@
         <dependency>
             <groupId>io.github.mrdaios</groupId>
             <artifactId>templates-api</artifactId>
-            <version>0.0.1</version>
+            <version>0.0.2</version>
         </dependency>
     </dependencies>
 
