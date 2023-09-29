@@ -19,12 +19,19 @@ import java.util.Map;
 
 public class FMBaseTemplateRenderService implements TemplateRenderService {
 
-    private ObjectMapper objectMapper = new ObjectMapper();
+    private final ObjectMapper objectMapper = new ObjectMapper();
 
     @Override
     public Map<String, TemplateRenderModel> render(Map<String, String> template, URL templateDataPath) throws TemplateRenderException {
-        Map data = loadData(templateDataPath);
+        return render(template, templateDataPath, null);
+    }
 
+    @Override
+    public Map<String, TemplateRenderModel> render(Map<String, String> template, URL templateDataPath, Map globalTemplateData) throws TemplateRenderException {
+        Map data = loadData(templateDataPath);
+        if (globalTemplateData != null) {
+            data.put("global", globalTemplateData);
+        }
         HashMap<String, TemplateRenderModel> renderModelMap = new HashMap<>();
         template.forEach((filePath, templateContent) -> {
             // 初始化运行环境
