@@ -9,4 +9,7 @@ import java.util.Map;
 public interface TemplateRenderService {
 
     Map<String, TemplateRenderModel> render(Map<String, String> template, URL templateDataPath) throws TemplateRenderException;
+
+    Map<String, TemplateRenderModel> render(Map<String, String> template, URL templateDataPath, Map globalTemplateData) throws TemplateRenderException;
+
 }

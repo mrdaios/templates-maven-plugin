@@ -23,6 +23,7 @@ import java.io.IOException;
 import java.net.URL;
 import java.nio.file.Path;
 import java.nio.file.Paths;
+import java.util.HashMap;
 import java.util.Map;
 import java.util.concurrent.atomic.AtomicInteger;
 
@@ -53,6 +54,12 @@ public class Templates extends AbstractMojo {
     @Parameter(property = "templateOutputPath", required = true)
     private File templateOutputPath;
 
+    /**
+     * 模版全局配置,可配合模版自定义
+     */
+    @Parameter(property = "templateConfiguration", required = false)
+    private Map<String, String> templateConfiguration;
+
     @Override
     public void execute() throws MojoExecutionException, MojoFailureException {
         Log log = getLog();
@@ -69,7 +76,7 @@ public class Templates extends AbstractMojo {
             Map<String, String> templateMap = templateLoader.loadTemplate(templatePath);
             log.info("模板开始渲染...");
             TemplateRenderService templateRender = templateProvider.getTemplateRender();
-            Map<String, TemplateRenderModel> renderResult = templateRender.render(templateMap, templateDataPath);
+            Map<String, TemplateRenderModel> renderResult = templateRender.render(templateMap, templateDataPath, templateConfiguration);
             log.info("文件开始生成...");
             generateFile(templateOutputPath.getPath(), renderResult);
         } catch (TemplateLoaderException exception) {

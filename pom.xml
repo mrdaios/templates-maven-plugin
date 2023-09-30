@@ -6,7 +6,7 @@
     <groupId>io.github.mrdaios</groupId>
     <artifactId>templates</artifactId>
     <packaging>pom</packaging>
-    <version>0.0.2</version>
+    <version>0.0.3</version>
 
     <properties>
         <maven.compiler.source>8</maven.compiler.source>
@@ -21,5 +21,6 @@
         <module>templates-api-freemarker</module>
         <module>templates-freemarker</module>
         <module>templates-maven-plugin</module>
+        <module>templates-test</module>
     </modules>
 </project>
