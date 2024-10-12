@@ -32,17 +32,23 @@ public class FMBaseTemplateRenderService implements TemplateRenderService {
         if (globalTemplateData != null) {
             data.put("global", globalTemplateData);
         }
+        return render(template, data);
+    }
+
+    @Override
+    public Map<String, TemplateRenderModel> render(Map<String, String> template, Map templateData) throws TemplateRenderException {
         HashMap<String, TemplateRenderModel> renderModelMap = new HashMap<>();
         template.forEach((filePath, templateContent) -> {
             // 初始化运行环境
             FMRenderContext.getCurrentContext().refreshContext();
-            Map<String, TemplateRenderModel> result = process(filePath, templateContent, data);
+            Map<String, TemplateRenderModel> result = process(filePath, templateContent, templateData);
             if (null != result && result.size() > 0) {
                 renderModelMap.putAll(result);
             }
         });
         return renderModelMap;
     }
+
 
     /**
      * 加载数据
