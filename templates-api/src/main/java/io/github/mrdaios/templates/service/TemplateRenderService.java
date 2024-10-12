@@ -12,4 +12,6 @@ public interface TemplateRenderService {
 
     Map<String, TemplateRenderModel> render(Map<String, String> template, URL templateDataPath, Map globalTemplateData) throws TemplateRenderException;
 
+    Map<String, TemplateRenderModel> render(Map<String, String> template, Map templateData) throws TemplateRenderException;
+
 }
